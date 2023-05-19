@@ -2,12 +2,14 @@
 
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.AuthorName</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap-grid.min.css" />
+    @*TODO get bootstrap from CDN*@
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
-    <div>
+    <div class="container">
+        <h1>TEST</h1>
         @RenderBody()
     </div>
     <script src="~/lib/popper.js/umd/popper.min.js"></script>
