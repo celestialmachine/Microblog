@@ -1,7 +1,13 @@
+using Microblog.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add EF Core Dependency Injection
+builder.Services.AddDbContext<MicroblogContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MicroblogContext")));
 
 var app = builder.Build();
 
