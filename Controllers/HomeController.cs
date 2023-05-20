@@ -7,7 +7,7 @@ namespace Microblog.Controllers
     public class HomeController : Controller
     {
         private MicroblogContext _context { get; set; }
-        public HomeController(MicroblogContext ctx) => _context = ctx;
+        public HomeController(MicroblogContext context) => _context = context;
         public IActionResult Index()
         {
             var posts = _context.BlogPosts.ToList();

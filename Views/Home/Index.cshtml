@@ -2,27 +2,16 @@
 @{
     ViewData["Title"] = "CM Microblog";
 }
-
-<div class="text-center">
-    <h1>Posts</h1>
+@*TODO custom style blog with, bootstrap not the best solution for this*@
+<Section class="text-center col-xl-6 col-lg-8 col-md-12">
+    <h1>@ViewData["Title"]</h1>
     @*LEFTOFF build and style index. list posts*@
-    <table class="table">
-        <thead>
-            <tr>
-                <td>BLOG TITLE?</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var post in Model)
-            {
-                <tr>
-                    <td rowspan="2">@post.Title</td>
-                </tr>
-                <tr>
-                    <td>@post.CreatedDate</td>
-                    <td>@post.Content</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+    @foreach (var post in Model)
+    {
+        <article class="border">
+            <h2>@post.Title</h2>
+            <span>@post.CreatedDate</span>
+            <p>@post.Content</p>
+        </article>
+    }
+</Section>
