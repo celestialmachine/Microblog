@@ -5,13 +5,18 @@
 @*TODO custom style blog with, bootstrap not the best solution for this*@
 <Section class="text-center col-xl-6 col-lg-8 col-md-12">
     <h1>@ViewData["Title"]</h1>
+    <a asp-controller="BlogPost" asp-action="Add" class="btn btn-primary">Add Post</a>
     @*LEFTOFF build and style index. list posts*@
     @foreach (var post in Model)
     {
         <article class="border">
             <h2>@post.Title</h2>
-            <span>@post.CreatedDate</span>
+            <span>@post.CreatedDate || @post.Category.Name</span>
             <p>@post.Content</p>
+            <a asp-action="Edit" asp-controller="BlogPost"
+            asp-route-id="@post.Id" class="btn btn-primary">Edit</a>
+            <a asp-action="Delete" asp-controller="BlogPost"
+            asp-route-id="@post.Id" class="btn btn-primary">Delete</a>
         </article>
     }
 </Section>

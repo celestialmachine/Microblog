@@ -12,6 +12,7 @@ namespace Microblog.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
+            ViewBag.Categories = _context.Categories.OrderBy(c => c.Name).ToList();
             return View("Edit", new BlogPost());
         }
 
@@ -19,6 +20,7 @@ namespace Microblog.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
+            ViewBag.Categories = _context.Categories.OrderBy(c => c.Name).ToList();
             var blogPost = _context.BlogPosts.Find(id);
             return View(blogPost);
         }
@@ -28,7 +30,7 @@ namespace Microblog.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (blogPost.BlogPostId == 0)
+                if (blogPost.Id == 0)
                 {
                     _context.BlogPosts.Add(blogPost);
                 }
@@ -41,7 +43,8 @@ namespace Microblog.Controllers
             }
             else
             {
-                ViewBag.Action = (blogPost.BlogPostId == 0) ? "Add" : "Edit";
+                ViewBag.Action = (blogPost.Id == 0) ? "Add" : "Edit";
+                ViewBag.Categories = _context.Categories.OrderBy(c => c.Name).ToList();
                 return View(blogPost);
             }            
         }

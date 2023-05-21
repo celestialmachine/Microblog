@@ -8,10 +8,17 @@ namespace Microblog.Controllers
     {
         private MicroblogContext _context { get; set; }
         public HomeController(MicroblogContext context) => _context = context;
+
         public IActionResult Index()
         {
-            var posts = _context.BlogPosts.ToList();
+            var posts = _context.BlogPosts.Include(bp => bp.Category).OrderByDescending(bp => bp.CreatedDate).ToList();
             return View(posts);
         }
+
+        //TODO work on filtering by category and list of tags
+        //public IActionResult List(string category = "all", string tag = "all")
+        //{
+        //    var posts = _context.BlogPosts.Include(bp = bp.Category).
+        //}
     }
 }
