@@ -1,8 +1,9 @@
 ﻿@model BlogPost
 @{
+    Layout = "_MainLayout";
     ViewData["Title"] = "Delete";
 }
-<Section class="text-center col-xl-6 col-lg-8 col-md-12">
+<Section>
     <h1>@ViewBag.Title</h1>
     <h2>Confirm Delete</h2>
     <h3>@Model.Title</h3>

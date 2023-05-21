@@ -53,6 +53,15 @@ namespace Microblog.Models
                     CreatedDate = new DateTime(2023, 5, 20, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "TST"
+                },
+                new BlogPost
+                {
+                    Id = 5,
+                    Title = "Microblog, day Five",
+                    Content = "Added Admin Area starter files. Added link in home page to admin area. Did a nested three tier layout with _Layout holding shared <head> code, _MainLayout holding header and fotter, and then the other views nested within. Added bootstrap navigation bar.",
+                    CreatedDate = new DateTime(2023, 5, 21, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
                 }
             );
         }

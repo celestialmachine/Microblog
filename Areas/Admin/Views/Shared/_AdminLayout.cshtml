@@ -1,18 +1,26 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en">
+<html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title</title>
-    @*TODO get bootstrap from CDN*@
     <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/css/bootstrap.min.css" />
 </head>
-<body class="container d-flex justify-content-center flex-column text-center col-xl-5 col-lg-7 col-md-12">
-    @RenderBody()
+<body class="container d-flex justify-content-center flex-column text-center col-xl-6 col-lg-8 col-md-12">
+    <header>
+        <a asp-controller="Home" asp-action="Index">Blog Home</a>
+        <a asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
     <script src="~/lib/popper.js/umd/popper.min.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Celestial Machine</p>
+    </footer>
 </body>
 </html>
