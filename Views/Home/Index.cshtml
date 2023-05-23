@@ -12,7 +12,7 @@
     @foreach (var post in Model.Posts)
     {
         <article class="border">
-            <h2>@post.Title</h2>
+            <h2><a asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">@post.Title</a></h2>
             <span>@post.CreatedDate || @post.Category.Name</span>
             <p>@post.Content</p>
             <a asp-action="Edit" asp-controller="BlogPost"

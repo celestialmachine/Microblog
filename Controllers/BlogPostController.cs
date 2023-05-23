@@ -9,6 +9,16 @@ namespace Microblog.Controllers
         public BlogPostController(MicroblogContext context) => _context = context;
 
         [HttpGet]
+        public ViewResult Index(int id)
+        {
+            var bp = _context.BlogPosts.Find(id)!;
+            //TODO what happens if id is not found? handle exception
+            //Redirect to 404 if id is not found.
+            bp.Category = _context.Categories.Find(bp.CategoryId)!;
+            return View(bp);
+        }
+
+        [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";

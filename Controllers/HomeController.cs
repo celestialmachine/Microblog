@@ -12,16 +12,10 @@ namespace Microblog.Controllers
         public ViewResult Index(BlogViewModel model)
         {
             model.Categories = _context.Categories.ToList();
-            //DELETE List<string> arr = new List<string>();
-            //foreach (var category in model.Categories)
-            //{
-            //    arr.Add(category.CategoryId);
-            //}
 
             IQueryable<BlogPost> query = _context.BlogPosts.OrderBy(bp => bp.CreatedDate);
             if (model.Categories is not null)
             {
-                //DELETE query = query.Where(bp => arr.Contains(bp.CategoryId) );
                 query = query.Where(bp => model.Categories.Contains(bp.Category));
             }
             //TODO another IF for Tags
@@ -29,11 +23,5 @@ namespace Microblog.Controllers
             model.Posts = query.ToList();
             return View(model);
         }
-
-        //TODO work on filtering by category and list of tags
-        //public IActionResult List(string category = "all", string tag = "all")
-        //{
-        //    var posts = _context.BlogPosts.Include(bp = bp.Category).
-        //}
     }
 }

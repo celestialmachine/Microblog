@@ -67,7 +67,7 @@ namespace Microblog.Models
                 {
                     Id = 6,
                     Title = "Microblog, day Six",
-                    Content = "Added BlogViewModel class. Udpated HomeController Index action to return new BlogModelView as the model for the view. Updated Home/index to use BlogModelView as view model. ",
+                    Content = "Added BlogViewModel class. Udpated HomeController Index action to return new BlogModelView as the model for the view. Updated Home/index to use BlogModelView as view model. Added single blog post view. Added Index action to BlogPost controller for single blog post view.",
                     CreatedDate = new DateTime(2023, 5, 22, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"

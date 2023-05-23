@@ -1,0 +1,12 @@
+﻿@model BlogPost
+@{
+    Layout = "_MainLayout";
+    ViewData["Title"] = "Single Post View";
+}
+
+<section>
+    <h1>@Model.Title</h1>
+    <p>@Model.CreatedDate || @(Model.Category is null ? "Uncategorized" : Model.Category.Name)</p>
+    <p>@Model.Content</p>
+</section>
+
