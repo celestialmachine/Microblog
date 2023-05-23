@@ -10,7 +10,6 @@
     <Folder Include="Areas\Admin\Views\BlogPost\" />
     <Folder Include="Models\ExtensionMethods\" />
     <Folder Include="Models\Grid\" />
-    <Folder Include="Models\ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>

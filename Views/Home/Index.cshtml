@@ -1,4 +1,4 @@
-﻿@model List<BlogPost>
+﻿@model BlogViewModel
 @{
     Layout = "_MainLayout";
     ViewData["Title"] = "CM Microblog";
@@ -9,7 +9,7 @@
     <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-primary">Admin</a>
     <a asp-controller="BlogPost" asp-action="Add" class="btn btn-primary">Add Post</a>
     @*LEFTOFF build and style index. list posts*@
-    @foreach (var post in Model)
+    @foreach (var post in Model.Posts)
     {
         <article class="border">
             <h2>@post.Title</h2>

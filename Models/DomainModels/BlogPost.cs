@@ -26,6 +26,6 @@ namespace Microblog.Models
             return post.Split(" ").Length;
         }
         //TODO kinda useless in this blog scenario but okay. Maybe get rid off.
-        public string Slug => Category.Name + '-' + Title?.Replace(' ', '-').ToLower();
+        public string Slug => CategoryId + '-' + Title?.Replace(' ', '-').ToLower();
     }
 }
