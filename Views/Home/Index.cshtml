@@ -30,7 +30,9 @@
             <h2 class="text-center fw-bold"><a asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">@post.Title</a></h2>
         </div>
         <div class="row justify-content-center">
-            <span class="text-center fw-lighter text-muted">@post.CreatedDate || @post.Category.Name</span>
+            <span class="text-center fw-lighter text-muted">@post.CreatedDate ||
+                @*<a asp-action="Index" asp-controller="Home" asp-route-categoryFilter="@post.Category.Name">@post.Category.Name</a></span>*@
+                @post.Category.Name</span>
         </div>
         <div class="row justify-content-center">
             <p class="text-start">@post.Content</p>
