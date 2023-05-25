@@ -43,16 +43,19 @@ namespace Microblog.Controllers
                 if (blogPost.Id == 0)
                 {
                     _context.BlogPosts.Add(blogPost);
+                    TempData["message"] = $"{blogPost.Title} published!";
                 }
                 else
                 {
                     _context.BlogPosts.Update(blogPost);
+                    TempData["message"] = $"{blogPost.Title} updated!";
                 }
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
             else
             {
+                //TODO when does this happen???
                 ViewBag.Action = (blogPost.Id == 0) ? "Add" : "Edit";
                 ViewBag.Categories = _context.Categories.OrderBy(c => c.Name).ToList();
                 return View(blogPost);

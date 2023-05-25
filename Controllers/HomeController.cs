@@ -11,6 +11,7 @@ namespace Microblog.Controllers
 
         public ViewResult Index(BlogViewModel model)
         {
+            ViewBag.Message = TempData["messagte"];
             model.Categories = _context.Categories.ToList();
 
             IQueryable<BlogPost> query = _context.BlogPosts.OrderBy(bp => bp.CreatedDate);

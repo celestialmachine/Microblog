@@ -76,7 +76,7 @@ namespace Microblog.Models
                 {
                     Id = 7,
                     Title = "Microblog, day Seven",
-                    Content = "Gave another go at bootstrap after watching a couple of videos. I understoo it a lot better. Removed bootstrap files and supporting library files from solution and added links to get from a CDN instead. Updated libman.json file. ",
+                    Content = "Gave another go at bootstrap after watching a couple of videos. I understoo it a lot better. Removed bootstrap files and supporting library files from solution and added links to get from a CDN instead. Updated libman.json file. Styled blog, very basic setup but cleaner. Used TempData to pass a message from the Blog Post Controller to the Home Controller in order to display a message showing that a post was either added or updated.",
                     CreatedDate = new DateTime(2023, 5, 24, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
