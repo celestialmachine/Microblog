@@ -71,6 +71,15 @@ namespace Microblog.Models
                     CreatedDate = new DateTime(2023, 5, 22, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
+                },
+                new BlogPost
+                {
+                    Id = 7,
+                    Title = "Microblog, day Seven",
+                    Content = "Gave another go at bootstrap after watching a couple of videos. I understoo it a lot better. Removed bootstrap files and supporting library files from solution and added links to get from a CDN instead. Updated libman.json file. ",
+                    CreatedDate = new DateTime(2023, 5, 24, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
                 }
             );
         }
