@@ -31,8 +31,7 @@
         </div>
         <div class="row justify-content-center">
             <span class="text-center fw-lighter text-muted">@post.CreatedDate ||
-                @*<a asp-action="Index" asp-controller="Home" asp-route-categoryFilter="@post.Category.Name">@post.Category.Name</a></span>*@
-                @post.Category.Name</span>
+                <a asp-action="Index" asp-controller="Home" asp-route-FilterCategory="@post.Category.Name">@post.Category.Name</a></span>
         </div>
         <div class="row justify-content-center">
             <p class="text-start">@post.Content</p>

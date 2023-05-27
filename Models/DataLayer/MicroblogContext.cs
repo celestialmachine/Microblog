@@ -80,6 +80,15 @@ namespace Microblog.Models
                     CreatedDate = new DateTime(2023, 5, 24, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
+                },
+                new BlogPost
+                {
+                    Id = 8,
+                    Title = "Microblog, day Eight",
+                    Content = "Went back to single filter category but this time using a routing parameter. I think it's a better implementation as there is no need to keep this data saved in the model.",
+                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
                 }
             );
         }
