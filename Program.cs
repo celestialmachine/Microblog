@@ -8,7 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Add EF Core Dependency Injection
-builder.Services.AddDbContext<MicroblogContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MicroblogContext")));
+// When working on windows
+// connection string: "Server=(localdb)\\mssqllocaldb;Database=CMMicroblog;Trusted_Connection=True;MultipleActiveResultSets=true"
+//builder.Services.AddDbContext<MicroblogContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MicroblogContext")));
+
+// When working on mac
+// connection string: "Filename=Microblog.sqlite"
+builder.Services.AddDbContext<MicroblogContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("MicroblogContext")));
 
 builder.Services.AddRouting(options =>
 {

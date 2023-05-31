@@ -89,6 +89,15 @@ namespace Microblog.Models
                     CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
+                },
+                new BlogPost
+                {
+                    Id = 9,
+                    Title = "Microblog, day Nine",
+                    Content = "Set up Visual Studio for mac. Updated application to use SQLite instead of SQL Server. Consisted up udpdating the Builder.Services.AddDbContext method's options parameter to use SQLite, the connection string, and deleting all migrations files to build a new Initial migration. There could be a workaround to deleting the migrations files, the issue seems to be that SQLite does not like the 'max' option as a varchar parameter. After that, updating the database was succesful and the application worked.",
+                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
                 }
             );
         }
