@@ -10,11 +10,11 @@ builder.Services.AddControllersWithViews();
 // Add EF Core Dependency Injection
 // When working on windows
 // connection string: "Server=(localdb)\\mssqllocaldb;Database=CMMicroblog;Trusted_Connection=True;MultipleActiveResultSets=true"
-//builder.Services.AddDbContext<MicroblogContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MicroblogContext")));
+builder.Services.AddDbContext<MicroblogContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MicroblogContext")));
 
 // When working on mac
 // connection string: "Filename=Microblog.sqlite"
-builder.Services.AddDbContext<MicroblogContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("MicroblogContext")));
+//builder.Services.AddDbContext<MicroblogContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("MicroblogContext")));
 
 builder.Services.AddRouting(options =>
 {
@@ -52,6 +52,10 @@ app.MapAreaControllerRoute(
     name: "admin",
     areaName: "Admin",
     pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "SingleBlogPostView",
+    pattern: "{controller=BlogPost}/{action=Index}/{id}");
 
 app.MapControllerRoute(
     name: "default",

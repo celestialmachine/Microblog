@@ -3,6 +3,7 @@ using System;
 using Microblog.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -11,38 +12,44 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Microblog.Migrations
 {
     [DbContext(typeof(MicroblogContext))]
-    [Migration("20230531032118_Initial")]
+    [Migration("20230602014031_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.16");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "6.0.16")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Microblog.Models.BlogPost", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CategoryId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(75)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(75)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -58,7 +65,7 @@ namespace Microblog.Migrations
                             Content = "Set up folder structure. Deleted starter files. Added own HomeController. Added BlogPost class. Added own /Home/Index.cshtml. Added own _layout. Added Tagg Helper to _ViewImports",
                             CreatedDate = new DateTime(2023, 5, 17, 21, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Microblog, day one",
-                            UpdatedDate = new DateTime(2023, 5, 30, 20, 21, 18, 19, DateTimeKind.Local).AddTicks(4300)
+                            UpdatedDate = new DateTime(2023, 6, 1, 18, 40, 31, 103, DateTimeKind.Local).AddTicks(3288)
                         },
                         new
                         {
@@ -67,7 +74,7 @@ namespace Microblog.Migrations
                             Content = "Added EF Core. Added DBContext class(MicroblogContext) with starter seed data. Added EF Core dependency injection. Added bootstrap and supporting jQuery, popper. Added bootstrap and supporting scripts to _Layout. Added connection string. Created database using migrations. Added MicroblogContext to home controller to test mvc pattern. Quick render of data on home/index. Misspelled TagHelpers on _ViewImports and cried for an hour.",
                             CreatedDate = new DateTime(2023, 5, 18, 21, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Microblog, day two",
-                            UpdatedDate = new DateTime(2023, 5, 30, 20, 21, 18, 19, DateTimeKind.Local).AddTicks(4350)
+                            UpdatedDate = new DateTime(2023, 6, 1, 18, 40, 31, 103, DateTimeKind.Local).AddTicks(3298)
                         },
                         new
                         {
@@ -76,7 +83,7 @@ namespace Microblog.Migrations
                             Content = "Tried to do an initial style of blog with bootstrap but not sure the results are the best. For something so simple I might just do my own styling. Or I need to learn more about bootstrap. Added new migration(TestContentMigration) to update blog content and titles. Added BlogPost controller with initial add, edit, delete requests. Added BlogPost Edit view.",
                             CreatedDate = new DateTime(2023, 5, 19, 21, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Microblog, day three",
-                            UpdatedDate = new DateTime(2023, 5, 30, 20, 21, 18, 19, DateTimeKind.Local).AddTicks(4350)
+                            UpdatedDate = new DateTime(2023, 6, 1, 18, 40, 31, 103, DateTimeKind.Local).AddTicks(3299)
                         },
                         new
                         {
@@ -85,7 +92,7 @@ namespace Microblog.Migrations
                             Content = "Added BlogPost/Edit view content. Added BlogPost/Delete view page and content. Tested passing the model around. Updated button on BlogPost/Edit view to reflect if making new post or updating existing one. Added Category class. Foreign key for Category added to BlogPost class. Added Category to MicroBlog Context to seed data. Added migration and updated database. Edited view to reflect new category. Added lowercase URL routing with optional slug parameter. Added slug property to BlogPost class. Although slug may not be a good choice for blog content. Played around with routing but will get back to it when I sort by category and tags. Added admin area folders.",
                             CreatedDate = new DateTime(2023, 5, 20, 21, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Microblog, day Four",
-                            UpdatedDate = new DateTime(2023, 5, 30, 20, 21, 18, 19, DateTimeKind.Local).AddTicks(4350)
+                            UpdatedDate = new DateTime(2023, 6, 1, 18, 40, 31, 103, DateTimeKind.Local).AddTicks(3301)
                         },
                         new
                         {
@@ -94,7 +101,7 @@ namespace Microblog.Migrations
                             Content = "Added Admin Area starter files. Added link in home page to admin area. Did a nested three tier layout with _Layout holding shared <head> code, _MainLayout holding header and fotter, and then the other views nested within. Added bootstrap navigation bar. Added option scripts section to _layout that loads validation scripts for views that need it.",
                             CreatedDate = new DateTime(2023, 5, 21, 21, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Microblog, day Five",
-                            UpdatedDate = new DateTime(2023, 5, 30, 20, 21, 18, 19, DateTimeKind.Local).AddTicks(4350)
+                            UpdatedDate = new DateTime(2023, 6, 1, 18, 40, 31, 103, DateTimeKind.Local).AddTicks(3301)
                         },
                         new
                         {
@@ -103,7 +110,7 @@ namespace Microblog.Migrations
                             Content = "Added BlogViewModel class. Udpated HomeController Index action to return new BlogModelView as the model for the view. Updated Home/index to use BlogModelView as view model. Added single blog post view. Added Index action to BlogPost controller for single blog post view.",
                             CreatedDate = new DateTime(2023, 5, 22, 21, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Microblog, day Six",
-                            UpdatedDate = new DateTime(2023, 5, 30, 20, 21, 18, 19, DateTimeKind.Local).AddTicks(4350)
+                            UpdatedDate = new DateTime(2023, 6, 1, 18, 40, 31, 103, DateTimeKind.Local).AddTicks(3303)
                         },
                         new
                         {
@@ -112,7 +119,7 @@ namespace Microblog.Migrations
                             Content = "Gave another go at bootstrap after watching a couple of videos. I understoo it a lot better. Removed bootstrap files and supporting library files from solution and added links to get from a CDN instead. Updated libman.json file. Styled blog, very basic setup but cleaner. Used TempData to pass a message from the Blog Post Controller to the Home Controller in order to display a message showing that a post was either added or updated. Definitely need to make a deeper dive on linq. Added ability to filer by a single category but will need to add a filtered category property to Blog View Model to filter by multiple. Same will apply to tags if implemented.",
                             CreatedDate = new DateTime(2023, 5, 24, 21, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Microblog, day Seven",
-                            UpdatedDate = new DateTime(2023, 5, 30, 20, 21, 18, 19, DateTimeKind.Local).AddTicks(4360)
+                            UpdatedDate = new DateTime(2023, 6, 1, 18, 40, 31, 103, DateTimeKind.Local).AddTicks(3303)
                         },
                         new
                         {
@@ -121,18 +128,27 @@ namespace Microblog.Migrations
                             Content = "Went back to single filter category but this time using a routing parameter. I think it's a better implementation as there is no need to keep this data saved in the model.",
                             CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Microblog, day Eight",
-                            UpdatedDate = new DateTime(2023, 5, 30, 20, 21, 18, 19, DateTimeKind.Local).AddTicks(4360)
+                            UpdatedDate = new DateTime(2023, 6, 1, 18, 40, 31, 103, DateTimeKind.Local).AddTicks(3304)
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = "DEV",
+                            Content = "Set up Visual Studio for mac. Updated application to use SQLite instead of SQL Server. Consisted up udpdating the Builder.Services.AddDbContext method's options parameter to use SQLite, the connection string, and deleting all migrations files to build a new Initial migration. There could be a workaround to deleting the migrations files, the issue seems to be that SQLite does not like the 'max' option as a varchar parameter. After that, updating the database was succesful and the application worked.",
+                            CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Microblog, day Nine",
+                            UpdatedDate = new DateTime(2023, 6, 1, 18, 40, 31, 103, DateTimeKind.Local).AddTicks(3305)
                         });
                 });
 
             modelBuilder.Entity("Microblog.Models.Category", b =>
                 {
                     b.Property<string>("CategoryId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CategoryId");
 

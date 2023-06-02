@@ -9,6 +9,7 @@ namespace Microblog.Controllers
         public BlogPostController(MicroblogContext context) => _context = context;
 
         [HttpGet]
+        [Route("/post/{id}")]
         public ViewResult Index(int id)
         {
             var bp = _context.BlogPosts.Find(id)!;

@@ -16,9 +16,9 @@ namespace Microblog.Models
         public DateTime CreatedDate { get; set;}
         public DateTime UpdatedDate { get; set;}
         [Required(ErrorMessage =  "Please select a category or enter a new one.")]
-        public string CategoryId { get; set; } = string.Empty;
+        public string CategoryId { get; set; } = string.Empty; //Foreign key property
         [ValidateNever]
-        public Category Category { get; set; } = null!;
+        public Category Category { get; set; } = null!; //Navigation property
         public int WordCount(string post)
         {
             //TODO this does not account for double spaces and maybe

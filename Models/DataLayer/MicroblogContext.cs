@@ -98,6 +98,15 @@ namespace Microblog.Models
                     CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
+                },
+                new BlogPost
+                {
+                    Id = 10,
+                    Title = "Microblog, day Nine",
+                    Content = "Back to windows development. Updated connection string, DI, rebuilt initial migration and database. Fixed the alignment issues between nav header and main content. Fixed single blog post layout for Index, Edit, & Delete.",
+                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
                 }
             );
         }
