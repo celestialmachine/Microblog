@@ -1,8 +1,10 @@
 ﻿using Microblog.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Microblog.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class BlogPostController : Controller
     {

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<User> signInManager;
+@{
     Layout = "_Layout";
 }
 @section scripts {
@@ -13,7 +15,17 @@
                     <a class="nav-link" href="#">Back to CM.COM</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="Admin" asp-controller="BlogPost" asp-action="Index">Admin</a>
+                    @*<a class="nav-link" asp-area="Admin" asp-controller="BlogPost" asp-action="Index">Admin</a>*@
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        //is logged in, show sign out link
+                        <a class="nav-link" asp-action="Logout" asp-controller="Account">Log Out</a>
+                    }
+                    else
+                    {
+                        //else display sign in link
+                        <a class="nav-link" asp-action="Login" asp-controller="Account">Log In</a>
+                    }
                 </li>
             </ul>
         </div>
