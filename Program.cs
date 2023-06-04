@@ -39,15 +39,6 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-//TODO Don't know if I need this
-//app.UseEndpoints(endpoints =>
-//{
-//    endpoints.MapControllerRoute(
-//      name: "areas",
-//      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-//    );
-//});
-
 app.MapAreaControllerRoute(
     name: "admin",
     areaName: "Admin",
