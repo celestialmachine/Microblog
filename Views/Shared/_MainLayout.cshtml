@@ -19,12 +19,14 @@
                     @if (signInManager.IsSignedIn(User))
                     {
                         //is logged in, show sign out link
-                        <a class="nav-link" asp-action="Logout" asp-controller="Account">Log Out</a>
+                        <form method="post" asp-action="Logout" asp-controller="Account">
+                            <input type="submit" value="Log Out" class="btn btn-outline-light" />
+                        </form>
                     }
                     else
                     {
                         //else display sign in link
-                        <a class="nav-link" asp-action="Login" asp-controller="Account">Log In</a>
+                        <a class="nav-link btn btn-outline-light" asp-action="Login" asp-controller="Account">Admin</a>
                     }
                 </li>
             </ul>
