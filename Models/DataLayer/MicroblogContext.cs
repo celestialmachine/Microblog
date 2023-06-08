@@ -128,6 +128,15 @@ namespace Microblog.Models
                     CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
+                },
+                new BlogPost
+                {
+                    Id = 13,
+                    Title = "Microblog, day Thirteen",
+                    Content = "Added ChangePassword view model & view. Added ChangePassword get and post actions to Account controller. Ultimately adding the ability for admin(me) to udpate password since inital seed data will be readily viewable in GitHub. Fixed _viewStart to point to _MainLayout and removed the layour call from the first views I built.",
+                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
                 }
             );
         }

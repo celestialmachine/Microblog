@@ -14,21 +14,23 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Back to CM.COM</a>
                 </li>
-                <li class="nav-item">
-                    @*<a class="nav-link" asp-area="Admin" asp-controller="BlogPost" asp-action="Index">Admin</a>*@
-                    @if (signInManager.IsSignedIn(User))
-                    {
-                        //is logged in, show sign out link
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <li class="nav-item">
                         <form method="post" asp-action="Logout" asp-controller="Account">
                             <input type="submit" value="Log Out" class="btn btn-outline-light" />
                         </form>
-                    }
-                    else
-                    {
-                        //else display sign in link
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light" asp-action="ChangePassword" asp-controller="Account">PW</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
                         <a class="nav-link btn btn-outline-light" asp-action="Login" asp-controller="Account">Admin</a>
-                    }
-                </li>
+                    </li>
+                }
             </ul>
         </div>
     </nav>
