@@ -137,6 +137,15 @@ namespace Microblog.Models
                     CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
+                },
+                new BlogPost
+                {
+                    Id = 14,
+                    Title = "Microblog, day Fourteen",
+                    Content = "Moved the edit/delte single post buttoms from home page to single post view and they only appear if admin is logged in. Added paging, filtering, & sorting for the home page. But routing is an issue so I will have to revisit",
+                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
                 }
             );
         }

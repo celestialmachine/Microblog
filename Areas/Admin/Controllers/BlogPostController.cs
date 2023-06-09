@@ -42,7 +42,9 @@ namespace Microblog.Areas.Admin.Controllers
                     TempData["message"] = $"{blogPost.Title} updated!";
                 }
                 _context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                //LEFTOFF FIX ROUTE need to return to blogpost controller in root
+                return RedirectToAction("Index", "BlogPost", new { area = ""});
+                //return RedirectToRoute($"/post/{blogPost.Id.ToString()}");
             }
             else
             {

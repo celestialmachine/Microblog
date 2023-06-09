@@ -63,6 +63,10 @@ app.MapControllerRoute(
     pattern: "{controller=BlogPost}/{action=Index}/{id}");
 
 app.MapControllerRoute(
+    name: "page_sort",
+    pattern: "{controller=Home}/{action=Index}/page/{pagenumber}/size/{pagesize}/sort/{sortdirection}/category/{FilterCategory?}");
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{FilterCategory?}");
 

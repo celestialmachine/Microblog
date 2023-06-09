@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microblog.Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 
 namespace Microblog.Controllers
 {
@@ -10,19 +11,33 @@ namespace Microblog.Controllers
         public HomeController(MicroblogContext context) => _context = context;
 
         [HttpGet]
-        [Route("/{FilterCategory?}")]
-        public ViewResult Index(BlogViewModel model)
+        public IActionResult Index(GridData values)
         {
             ViewBag.Message = TempData["message"];
-
-            IQueryable<BlogPost> query = _context.BlogPosts.Include(bp => bp.Category).OrderBy(bp => bp.CreatedDate);
-            if (model.FilterCategory != "all")
+            IQueryable<BlogPost> query = _context.BlogPosts.Include(bp => bp.Category).OrderByDescending(bp => bp.CreatedDate);
+            //create new viewModel
+            var vm = new BlogViewModel
             {
-                query = query.Where(bp => bp.Category.Name == model.FilterCategory);
+                CurrentRoute = values,
+            };
+            //order by crated date according to route
+            if (vm.CurrentRoute.SortDirection == "desc")
+            {
+                query = query.OrderByDescending(bp => bp.CreatedDate);
             }
-
-            model.Posts = query.ToList();
-            return View(model);
+            else
+            {
+                query = query.OrderBy(bp => bp.CreatedDate);
+            }
+            //filter by category
+            if (vm.CurrentRoute.FilterCategory != "all")
+            {
+                query = query.Where(bp => bp.Category.Name == vm.CurrentRoute.FilterCategory);
+            }
+            //filter by paging
+            query = query.Skip((vm.CurrentRoute.PageNumber - 1) * vm.CurrentRoute.PageSize).Take(vm.CurrentRoute.PageSize);
+            vm.Posts = query.ToList();
+            return View(vm);
         }
     }
 }
