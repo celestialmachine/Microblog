@@ -2,6 +2,26 @@
 @{
     ViewData["Title"] = "Microblog Home";
 }
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $("#btnLoadMore").on('click', function(){
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("LoadMore")',
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    success: function(response){
+                        $("#testload").text(response)
+                    },
+                    error: function(){
+                        alert('Error')
+                    }
+                })
+            })
+        })
+    </script>
+}
 
 <div class="row justify-content-center m-0 p-0">
     <div class="text-center">
@@ -31,3 +51,5 @@
         </div>
     </article>
 }
+<span id="testload"></span>
+<button id="btnLoadMore">Load More</button>
