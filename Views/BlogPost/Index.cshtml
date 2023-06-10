@@ -5,7 +5,7 @@
     ViewData["Title"] = "Single Post View";
 }
 
-<section class="container col-6 border">
+<section class="container border">
     <h1 class="row justify-content-center">@Model.Title</h1>
     <p class="row justify-content-center">@Model.CreatedDate || @(Model.Category is null ? "Uncategorized" : Model.Category.Name)</p>
     <p class="row justify-content-center">@Model.Content</p>

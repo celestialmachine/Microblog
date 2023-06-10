@@ -151,7 +151,7 @@ namespace Microblog.Models
                 {
                     Id = 15,
                     Title = "Microblog, day Fifteen",
-                    Content = "Did some research on routing prior to today and I was able to fix the single blogpost routing for all controllers including the admin area. Removed the grid data class added yesterday. After all it was not the best solution to page/sort the blog. Created a new Account controller in the Admin area in order to move the ChangePassword actions and view to the Admin area.",
+                    Content = "Did some research on routing prior to today and I was able to fix the single blogpost routing for all controllers including the admin area. Removed the grid data class added yesterday. After all it was not the best solution to page/sort the blog. Created a new Account controller in the Admin area in order to move the ChangePassword actions and view to the Admin area. Added custom css to control content width. Updated all views to use custom width. Updated MainLayout header and footer navigation: Moved brand to center, home link to left, and sign in/out to right. Moved link to change password to footer.",
                     CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
