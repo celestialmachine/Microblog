@@ -12,7 +12,19 @@
                     dataType: 'json',
                     contentType: "application/json; charset=utf-8",
                     success: function(response){
-                        $("#testload").text(response)
+                        var addedPosts = '';
+                        for (var i = 0; i < response.length; i++){
+                            addedPosts += '<article class="border p-3 m-0">'
+                                + '<div class="row justify-content-center">'
+                                + '<h2 class="text-center fw-bold" > <a href="/post/' + response[i].id + '/">' + response[i].title + '</a></h2></div>'
+                                + '<div class="row justify-content-center"><span class="text-center fw-lighter text-muted">'
+                                + response[i].createdDate.substring(0, 10) + ' || '
+                                + '<a href="/' + response[i].category.name + '/">' + response[i].category.name + '</a></span></div>'
+                                + '<div class="row justify-content-center"><p class="text-start">' + response[i].content + '</p></div>'
+                                + '</article>'
+                                //'title, id, content, createddate, updateddate, categoryid, category'
+                        }
+                        $(addedPosts).insertBefore("#testload")
                     },
                     error: function(){
                         alert('Error')
@@ -38,6 +50,7 @@
 
 @foreach (var post in Model.Posts)
 {
+    //Any html/css changes made here must also be made on the ajax call
     <article class="border p-3 m-0">
         <div class="row justify-content-center">
             <h2 class="text-center fw-bold"><a asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">@post.Title</a></h2>
