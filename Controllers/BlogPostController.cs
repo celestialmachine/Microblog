@@ -19,6 +19,7 @@ namespace Microblog.Controllers
             return View(bp);
         }
 
+        //TODO move ADD to controller in Admin area
         [HttpGet]
         public IActionResult Add()
         {
@@ -27,6 +28,7 @@ namespace Microblog.Controllers
             return View("Edit", new BlogPost());
         }
 
+        //TODO once add is moved, delete all of this
         [HttpGet]
         public IActionResult Edit(int id)
         {

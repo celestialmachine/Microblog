@@ -11,31 +11,31 @@ namespace Microblog.Controllers
         public HomeController(MicroblogContext context) => _context = context;
 
         [HttpGet]
-        public IActionResult Index(GridData values)
+        [Route("/{FilterCategory?}")]
+        public ViewResult Index(BlogViewModel model)
         {
             ViewBag.Message = TempData["message"];
+
+            IQueryable<BlogPost> query = _context.BlogPosts.Include(bp => bp.Category).OrderByDescending(bp => bp.CreatedDate);
+
+            if (model.FilterCategory != "all")
+            {
+                query = query.Where(bp => bp.Category.Name == model.FilterCategory);
+            }
+            //TODO LOAD MORE?
+            model.Posts = query.ToList();
+            return View(model);
+        }
+
+
+        [HttpGet]
+        public IActionResult Test()
+        {
             IQueryable<BlogPost> query = _context.BlogPosts.Include(bp => bp.Category).OrderByDescending(bp => bp.CreatedDate);
             //create new viewModel
-            var vm = new BlogViewModel
-            {
-                CurrentRoute = values,
-            };
-            //order by crated date according to route
-            if (vm.CurrentRoute.SortDirection == "desc")
-            {
-                query = query.OrderByDescending(bp => bp.CreatedDate);
-            }
-            else
-            {
-                query = query.OrderBy(bp => bp.CreatedDate);
-            }
-            //filter by category
-            if (vm.CurrentRoute.FilterCategory != "all")
-            {
-                query = query.Where(bp => bp.Category.Name == vm.CurrentRoute.FilterCategory);
-            }
+            var vm = new BlogViewModel { };
             //filter by paging
-            query = query.Skip((vm.CurrentRoute.PageNumber - 1) * vm.CurrentRoute.PageSize).Take(vm.CurrentRoute.PageSize);
+            //query = query.Skip((vm.CurrentRoute.PageNumber - 1) * vm.CurrentRoute.PageSize).Take(vm.CurrentRoute.PageSize);
             vm.Posts = query.ToList();
             return View(vm);
         }

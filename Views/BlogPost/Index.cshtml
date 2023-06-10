@@ -11,7 +11,7 @@
     <p class="row justify-content-center">@Model.Content</p>
     @if (signInManager.IsSignedIn(User))
     {
-        <a asp-area="Admin" asp-action="Index" asp-controller="BlogPost" asp-route-id="@Model.Id" class="btn btn-primary mb-2">Edit</a>
+        <a asp-area="Admin" asp-action="Edit" asp-controller="BlogPost" asp-route-id="@Model.Id" class="btn btn-primary mb-2">Edit</a>
         <a asp-area="Admin" asp-action="Delete" asp-controller="BlogPost" asp-route-id="@Model.Id" class="btn btn-primary mb-2 ms-2">Delete</a>
     }
 </section>

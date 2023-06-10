@@ -9,7 +9,7 @@
     <p>@Model.Content</p>
     <form asp-action="Delete" method="post">
         <button type="submit" class="btn btn-primary">Delete</button>
-        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancel</a>
+        <a asp-controller="BlogPost" asp-action="Index" asp-area="" asp-route-id="@Model.Id" class="btn btn-secondary">Cancel</a>
     </form>
 </Section>
 

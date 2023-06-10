@@ -12,7 +12,7 @@ namespace Microblog.Areas.Admin.Controllers
         public BlogPostController(MicroblogContext context) => _context = context;
 
         [HttpGet]
-        public IActionResult Index(int id)
+        public IActionResult Edit(int id)
         {
             ViewBag.Categories = _context.Categories.OrderBy(c => c.Name).ToList();
             if (id != 0)
@@ -43,7 +43,7 @@ namespace Microblog.Areas.Admin.Controllers
                 }
                 _context.SaveChanges();
                 //LEFTOFF FIX ROUTE need to return to blogpost controller in root
-                return RedirectToAction("Index", "BlogPost", new { area = ""});
+                return RedirectToAction("Index", "BlogPost", new { id = blogPost.Id});
                 //return RedirectToRoute($"/post/{blogPost.Id.ToString()}");
             }
             else

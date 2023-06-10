@@ -142,7 +142,16 @@ namespace Microblog.Models
                 {
                     Id = 14,
                     Title = "Microblog, day Fourteen",
-                    Content = "Moved the edit/delte single post buttoms from home page to single post view and they only appear if admin is logged in. Added paging, filtering, & sorting for the home page. But routing is an issue so I will have to revisit",
+                    Content = "Moved the edit/delte single post buttoms from home page to single post view and they only appear if admin is logged in. Added paging, filtering, & sorting for the home page. But routing is an issue so I will have to revisit.",
+                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
+                },
+                new BlogPost
+                {
+                    Id = 15,
+                    Title = "Microblog, day Fifteen",
+                    Content = "Did some research on routing prior to today and I was able to fix the single blogpost routing for all controllers including the admin area. Removed the grid data class added yesterday. After all it was not the best solution to page/sort the blog. Created a new Account controller in the Admin area in order to move the ChangePassword actions and view to the Admin area.",
                     CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
