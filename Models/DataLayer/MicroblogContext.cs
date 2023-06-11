@@ -98,7 +98,7 @@ namespace Microblog.Models
                     Id = 9,
                     Title = "Microblog, day Nine",
                     Content = "Set up Visual Studio for mac. Updated application to use SQLite instead of SQL Server. Consisted up udpdating the Builder.Services.AddDbContext method's options parameter to use SQLite, the connection string, and deleting all migrations files to build a new Initial migration. There could be a workaround to deleting the migrations files, the issue seems to be that SQLite does not like the 'max' option as a varchar parameter. After that, updating the database was succesful and the application worked.",
-                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    CreatedDate = new DateTime(2023, 6, 1, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
                 },
@@ -107,7 +107,7 @@ namespace Microblog.Models
                     Id = 10,
                     Title = "Microblog, day Ten",
                     Content = "Back to windows development. Updated connection string, DI, rebuilt initial migration and database. Fixed the alignment issues between nav header and main content. Fixed single blog post layout for Index, Edit, & Delete.",
-                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    CreatedDate = new DateTime(2023, 6, 3, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
                 },
@@ -116,7 +116,7 @@ namespace Microblog.Models
                     Id = 11,
                     Title = "Microblog, day Eleven",
                     Content = "Stared working on the Admin area in order to move some of the post/edit functionality to that area. Had some issues with the routing. The current area routing does not like it when I set up a controller/View in the admin area with the name of Home. Changing the name work. I'm sure this has something to do with routing but it's out of my knowledge scope at the moment. Added a form to the admin index page to create/edit posts. Updated Admin BlogPost controller to have create/edit post functionality. Removed the admin and new post placeholder links from home page. Moved the delete functionality to the admin area. Added AspNetCore.Identity functionality to require a log in to access the admin area. Created the Account Controller, LoginViewModel, & the Login view. Created the ConfigureIdentity class in order to seed admin user account data.",
-                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    CreatedDate = new DateTime(2023, 6, 4, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
                 },
@@ -125,7 +125,7 @@ namespace Microblog.Models
                     Id = 12,
                     Title = "Microblog, day Twelve",
                     Content = "Plenned out final visual design of blog integrating design language from main website. Might introduce in phases in order to get this published asap.",
-                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    CreatedDate = new DateTime(2023, 6, 5, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
                 },
@@ -134,7 +134,7 @@ namespace Microblog.Models
                     Id = 13,
                     Title = "Microblog, day Thirteen",
                     Content = "Added ChangePassword view model & view. Added ChangePassword get and post actions to Account controller. Ultimately adding the ability for admin(me) to udpate password since inital seed data will be readily viewable in GitHub. Fixed _viewStart to point to _MainLayout and removed the layour call from the first views I built.",
-                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    CreatedDate = new DateTime(2023, 6, 6, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
                 },
@@ -143,7 +143,7 @@ namespace Microblog.Models
                     Id = 14,
                     Title = "Microblog, day Fourteen",
                     Content = "Moved the edit/delte single post buttoms from home page to single post view and they only appear if admin is logged in. Added paging, filtering, & sorting for the home page. But routing is an issue so I will have to revisit.",
-                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    CreatedDate = new DateTime(2023, 6, 7, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
                 },
@@ -152,7 +152,16 @@ namespace Microblog.Models
                     Id = 15,
                     Title = "Microblog, day Fifteen",
                     Content = "Did some research on routing prior to today and I was able to fix the single blogpost routing for all controllers including the admin area. Removed the grid data class added yesterday. After all it was not the best solution to page/sort the blog. Created a new Account controller in the Admin area in order to move the ChangePassword actions and view to the Admin area. Added custom css to control content width. Updated all views to use custom width. Updated MainLayout header and footer navigation: Moved brand to center, home link to left, and sign in/out to right. Moved link to change password to footer.",
-                    CreatedDate = new DateTime(2023, 5, 26, 21, 0, 0),
+                    CreatedDate = new DateTime(2023, 6, 9, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
+                },
+                new BlogPost
+                {
+                    Id = 16,
+                    Title = "Microblog, day Sixteen",
+                    Content = "Big day. Added a load more feature to the blog using ajax. Added ajax function to script section in the Home/Index view. Added the LoadMore action to HomeController. Passed the blogViewModel as json object back to the view. Rendered new posts to the view. Need to revisit date format since ajax call is receiving the c# DateTime formatted a bit differently than how razor page displays it. Added pagesize variable to HomeController to control how many posts load at a time. Added functionality so that the load more button is disabled once the posts at the and of the list are received. Added logic so that the load more functionality works when Home/Index view is showing a filtered blog list.",
+                    CreatedDate = new DateTime(2023, 6, 10, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
                 }

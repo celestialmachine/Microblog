@@ -6,9 +6,14 @@
     <script type="text/javascript">
         $(document).ready(function (){
             $("#btnLoadMore").on('click', function(){
+                var articleCount = $("article").length;
                 $.ajax({
                     type: "GET",
                     url: '@Url.Action("LoadMore")',
+                    data: {
+                        filter : $("#filter").val(),
+                        startLoad : articleCount
+                    },
                     dataType: 'json',
                     contentType: "application/json; charset=utf-8",
                     success: function(response){
@@ -22,7 +27,6 @@
                                 + '<a href="/' + response[i].category.name + '/">' + response[i].category.name + '</a></span></div>'
                                 + '<div class="row justify-content-center"><p class="text-start">' + response[i].content + '</p></div>'
                                 + '</article>'
-                                //'title, id, content, createddate, updateddate, categoryid, category'
                         }
                         $(addedPosts).insertBefore("#testload")
                     },
@@ -30,6 +34,11 @@
                         alert('Error')
                     }
                 })
+                //Disable load more if laoding last page
+                if (articleCount + parseInt(@ViewBag.pageSize) >= parseInt(@ViewBag.ArticleCount)) {
+                    $("#btnLoadMore").prop('disabled', true);
+                    $("#btnLoadMore").html('You have reached the end');
+                }
             })
         })
     </script>
@@ -47,6 +56,8 @@
         <h4 class="bg-success m-0 p-3 text-center">@TempData["message"]</h4>
     </div>
 }
+
+<input type="hidden" id="filter" value="@(this.ViewContext.RouteData.Values["FilterCategory"] ?? "all")" />
 
 @foreach (var post in Model.Posts)
 {
