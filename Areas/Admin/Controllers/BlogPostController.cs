@@ -12,8 +12,17 @@ namespace Microblog.Areas.Admin.Controllers
         public BlogPostController(MicroblogContext context) => _context = context;
 
         [HttpGet]
+        public IActionResult Add()
+        {
+            ViewBag.Action = "Add";
+            ViewBag.Categories = _context.Categories.OrderBy(c => c.Name).ToList();
+            return View("Edit", new BlogPost());
+        }
+
+        [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewBag.Action = "Edit";
             ViewBag.Categories = _context.Categories.OrderBy(c => c.Name).ToList();
             if (id != 0)
             {
@@ -42,9 +51,7 @@ namespace Microblog.Areas.Admin.Controllers
                     TempData["message"] = $"{blogPost.Title} updated!";
                 }
                 _context.SaveChanges();
-                //LEFTOFF FIX ROUTE need to return to blogpost controller in root
                 return RedirectToAction("Index", "BlogPost", new { id = blogPost.Id});
-                //return RedirectToRoute($"/post/{blogPost.Id.ToString()}");
             }
             else
             {
@@ -66,6 +73,7 @@ namespace Microblog.Areas.Admin.Controllers
         {
             _context.BlogPosts.Remove(blogPost);
             _context.SaveChanges();
+            TempData["message"] = $"{blogPost.Title} deleted!";
             return RedirectToAction("Index", "Home");
         }
     }

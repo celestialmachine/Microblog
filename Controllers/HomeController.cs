@@ -16,8 +16,6 @@ namespace Microblog.Controllers
         [Route("/{FilterCategory?}")]
         public ViewResult Index(BlogViewModel model)
         {
-            //TODO gotta show this message on the single post view
-            ViewBag.Message = TempData["message"];
             ViewBag.PageSize = _pageSize;
 
             IQueryable<BlogPost> query = _context.BlogPosts.Include(bp => bp.Category).OrderByDescending(bp => bp.CreatedDate);

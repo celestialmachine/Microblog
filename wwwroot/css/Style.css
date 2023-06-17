@@ -1,6 +1,58 @@
 ﻿body {
-    width: 800px;
+    overflow: hidden;
+}
+
+.starContainer {
+    height: 100vh;
+    overflow-y: auto;
+    perspective: 10px;
+}
+
+/* Starfields */
+.starfield {
+    background: transparent;
+    float: left;
+    transform-style: preserve-3d;
+    position: absolute;
+    overflow: hidden;
+    z-index: 0;
+}
+
+#starfield1 {
+    width: .6px;
+    height: .6px;
+    transform: translateZ(-50px) scale(10);
+    left: -4750px;
+    top: -4750px;
+}
+
+#starfield2 {
+    width: 1.2px;
+    height: 1.2px;
+    transform: translateZ(-30px) scale(6);
+    left: -3000px;
+    top: -1200px;
+}
+
+#starfield3 {
+    width: 3px;
+    height: 3px;
+    transform: translateZ(-10px) scale(2);
+    left: -1000px;
+    top: -600px;
+}
+
+.content {
     margin: auto;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #3A0CA3, #8c0d71);
+}
+
+#blogBody {
+    width: 100%;
+    overflow: hidden;
 }
 
 @media (max-width: 800px) {

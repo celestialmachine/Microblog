@@ -33,6 +33,13 @@
         <input type="hidden" asp-for="CreatedDate" />
         <input type="hidden" asp-for="UpdatedDate" />
         <button type="submit" class="btn btn-primary">Post</button>
-        <a asp-controller="BlogPost" asp-action="Index" asp-area="" asp-route-id="@Model.Id" class="btn btn-primary">Cancel</a>
+        @if(ViewBag.Action == "Edit")
+        {
+            <a asp-controller="BlogPost" asp-action="Index" asp-area="" asp-route-id="@Model.Id" class="btn btn-primary">Cancel</a>
+        }
+        else
+        {
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
+        }
     </form>
 </section>
