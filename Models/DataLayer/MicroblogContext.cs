@@ -165,6 +165,16 @@ namespace Microblog.Models
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
                 }
+                ,
+                new BlogPost
+                {
+                    Id = 17,
+                    Title = "Microblog, day Seventeen",
+                    Content = "#Test heading# Fixed the date display issues having to do with *formats* between C# datetime and JavaScript Date. ",
+                    CreatedDate = new DateTime(2023, 6, 16, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
+                }
             );
         }
     }

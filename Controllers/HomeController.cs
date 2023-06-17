@@ -59,6 +59,10 @@ namespace Microblog.Controllers
             query = query.Skip(startLoad).Take(_pageSize);
             var vm = new BlogViewModel { };
             vm.Posts = query.ToList();
+            foreach(var post in vm.Posts)
+            {
+                post.Content = Markdig.Markdown.ToHtml(post.Content ?? "Error reading post content: Controller");
+            }
             return Json(vm.Posts);
         }
     }

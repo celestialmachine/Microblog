@@ -26,7 +26,7 @@
                                 + '<div class="row justify-content-center"><span class="text-center fw-lighter text-muted">'
                                 + date.toLocaleDateString('en-US') + ' || '
                                 + '<a href="/' + response[i].category.name + '/">' + response[i].category.name + '</a></span></div>'
-                                + '<div class="row justify-content-center"><p class="text-start">' + response[i].content + '</p></div>'
+                                + '<div class="justify-content-center">' + response[i].content + '</div>'
                                 + '</article>'
                         }
                         $(addedPosts).insertBefore("#testload")
@@ -71,8 +71,8 @@
             <span class="text-center fw-lighter text-muted">@post.CreatedDate.ToShortDateString() ||
                 <a asp-action="Index" asp-controller="Home" asp-route-FilterCategory="@post.Category.Name">@post.Category.Name</a></span>
         </div>
-        <div class="row justify-content-center">
-            <p class="text-start">@post.Content</p>
+        <div class="justify-content-center">
+            @Html.Raw(Markdig.Markdown.ToHtml(post.Content ?? "Error reading post content: View"))
         </div>
     </article>
 }
