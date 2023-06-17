@@ -9,6 +9,7 @@ namespace Microblog.Controllers
     {
         private MicroblogContext _context { get; set; }
         public HomeController(MicroblogContext context) => _context = context;
+        private int _initialPageSize = 10;
         private int _pageSize = 3;
 
         [HttpGet]
@@ -27,7 +28,7 @@ namespace Microblog.Controllers
             }
             ViewBag.ArticleCount = query.Count();
             //load initial pagesize, TODO should initial page size be bigger?
-            model.Posts = query.Take(_pageSize).ToList();
+            model.Posts = query.Take(_initialPageSize).ToList();
             return View(model);
         }
 

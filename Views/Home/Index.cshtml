@@ -19,11 +19,12 @@
                     success: function(response){
                         var addedPosts = '';
                         for (var i = 0; i < response.length; i++){
+                            var date = new Date(Date.parse(response[i].createdDate));
                             addedPosts += '<article class="border p-3 m-0">'
                                 + '<div class="row justify-content-center">'
                                 + '<h2 class="text-center fw-bold" > <a href="/post/' + response[i].id + '/">' + response[i].title + '</a></h2></div>'
                                 + '<div class="row justify-content-center"><span class="text-center fw-lighter text-muted">'
-                                + response[i].createdDate.substring(0, 10) + ' || '
+                                + date.toLocaleDateString('en-US') + ' || '
                                 + '<a href="/' + response[i].category.name + '/">' + response[i].category.name + '</a></span></div>'
                                 + '<div class="row justify-content-center"><p class="text-start">' + response[i].content + '</p></div>'
                                 + '</article>'
@@ -67,7 +68,7 @@
             <h2 class="text-center fw-bold"><a asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">@post.Title</a></h2>
         </div>
         <div class="row justify-content-center">
-            <span class="text-center fw-lighter text-muted">@post.CreatedDate ||
+            <span class="text-center fw-lighter text-muted">@post.CreatedDate.ToShortDateString() ||
                 <a asp-action="Index" asp-controller="Home" asp-route-FilterCategory="@post.Category.Name">@post.Category.Name</a></span>
         </div>
         <div class="row justify-content-center">

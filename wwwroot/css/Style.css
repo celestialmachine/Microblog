@@ -1,9 +1,9 @@
 ﻿body {
-    width: 600px;
+    width: 800px;
     margin: auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     body {
         width: 100vw;
     }
