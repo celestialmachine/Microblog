@@ -1,5 +1,5 @@
 ﻿body {
-    overflow: hidden;
+    overflow: visible;
     color: #fff;
 }
 
@@ -49,7 +49,7 @@ header {
 }
 
 nav{
-    max-width: 800px;
+    max-width: 767px;
     margin: auto;
 }
 
@@ -61,6 +61,14 @@ nav{
     color: #F72585;
 }
 
+.link-custom:hover,
+.link-custom:visited,
+.link-custom:link,
+.link-custom:active{
+    color: #fff;
+    text-decoration: none;
+}
+
 .content {
     margin: auto;
     z-index: 10;
@@ -70,25 +78,32 @@ nav{
 }
 
 main {
-    width: 800px;
-    overflow: hidden;
+    max-width: 767px;
+    overflow: visible;
     margin: auto;
 }
 
 article {
+    
+}
+
+.blogPreview {
     background-color: hsla(0, 100%, 100%, 0.1);
     backdrop-filter: blur(1px);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 767px) {
     main {
-        width: 100vw;
+        width: 100%;
     }
-    .nav-item{
+
+    .nav-item {
         margin-left: 1rem;
         margin-top: .5rem;
+        margin-right: 1rem;
     }
-    form button{
+
+    form button {
         width: 100%;
     }
 }

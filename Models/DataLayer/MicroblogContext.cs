@@ -178,7 +178,7 @@ namespace Microblog.Models
                 {
                     Id = 18,
                     Title = "Microblog, day Eighteen",
-                    Content = "Moved post update/delte alerts to single blog view. Updated cancel button on new post so it directs back to home page. Deleting a post now displays alert message in homepage. Brought over star field from main CM page. Updated navigation bar to support collapsed menu on small screen sizes. ",
+                    Content = "Moved post update/delte alerts to single blog view. Updated cancel button on new post so it directs back to home page. Deleting a post now displays alert message in homepage. Brought over star field from main CM page. Updated navigation bar to support collapsed menu on small screen sizes. Udpated home page styling. Updated ajax call to apply updated styling.",
                     CreatedDate = new DateTime(2023, 6, 17, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"

@@ -20,14 +20,18 @@
                         var addedPosts = '';
                         for (var i = 0; i < response.length; i++){
                             var date = new Date(Date.parse(response[i].createdDate));
-                            addedPosts += '<article class="border p-3 m-0">'
-                                + '<div class="row justify-content-center">'
-                                + '<h2 class="text-center fw-bold" > <a href="/post/' + response[i].id + '/">' + response[i].title + '</a></h2></div>'
-                                + '<div class="row justify-content-center"><span class="text-center fw-lighter text-muted">'
-                                + date.toLocaleDateString('en-US') + ' || '
-                                + '<a href="/' + response[i].category.name + '/">' + response[i].category.name + '</a></span></div>'
-                                + '<div class="justify-content-center">' + response[i].content + '</div>'
-                                + '</article>'
+                            addedPosts += '<article class="m-0 mt-5">'
+                                + '<div class="row m-0">'
+                                + '<div class="col-2 pe-3 ps-0 mb-3">'
+                                + '<div class="h-100 d-flex align-items-center justify-content-center">'
+                                + '<span class="text-white-50">'
+                                + date.toLocaleDateString('en-US') + '</span></div></div>'
+                                + '<h2 class="col-10 fw-bold ps-0 mb-3">'
+                                + '<a class="link-custom" href="/post/' + response[i].id + '"/>' + response[i].title
+                                + '</a></h2></div>'
+                                + '<div class="row justify-content-end m-0">'
+                                + '<div class="col-10 blogPreview rounded-2 m-0 px-3 pt-3">'
+                                + response[i].content + '</div></div></article>'
                         }
                         $(addedPosts).insertBefore("#testload")
                     },
@@ -57,16 +61,20 @@
 @foreach (var post in Model.Posts)
 {
     //Any html/css changes made here must also be made on the ajax call
-    <article class="border p-3 m-0 mt-3 rounded-1">
-        <div class="row justify-content-center">
-            <h2 class="text-center fw-bold"><a asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">@post.Title</a></h2>
+    <article class="m-0 mt-5">
+        <div class="row m-0">
+            <div class="col-2 pe-3 ps-0 mb-3">
+                <div class="h-100 d-flex align-items-center justify-content-center">
+                    <span class="text-white-50">@post.CreatedDate.ToShortDateString()</span>
+                    @*<a asp-action="Index" asp-controller="Home" asp-route-FilterCategory="@post.Category.Name">@post.Category.Name</a>*@
+                </div>
+            </div>
+            <h2 class="col-10 fw-bold ps-0 mb-3"><a class="link-custom" asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">@post.Title</a></h2>
         </div>
-        <div class="row justify-content-center">
-            <span class="text-center fw-lighter text-muted">@post.CreatedDate.ToShortDateString() ||
-                <a asp-action="Index" asp-controller="Home" asp-route-FilterCategory="@post.Category.Name">@post.Category.Name</a></span>
-        </div>
-        <div class="justify-content-center">
-            @Html.Raw(Markdig.Markdown.ToHtml(post.Content ?? "Error reading post content: View"))
+        <div class="row justify-content-end m-0">
+            <div class="col-10 blogPreview rounded-2 m-0 px-3 pt-3">
+                @Html.Raw(Markdig.Markdown.ToHtml(post.Content ?? "Error reading post content: View"))
+            </div>
         </div>
     </article>
 }
