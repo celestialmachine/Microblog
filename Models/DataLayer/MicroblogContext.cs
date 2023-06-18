@@ -164,14 +164,22 @@ namespace Microblog.Models
                     CreatedDate = new DateTime(2023, 6, 10, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
-                }
-                ,
+                },
                 new BlogPost
                 {
                     Id = 17,
                     Title = "Microblog, day Seventeen",
                     Content = "Fixed the date display issues having to do with formating between C# datetime and JavaScript Date. Implemented Markdig package for markdown support. Updated views to display markdown. Updated ajax call to return markdown string.",
                     CreatedDate = new DateTime(2023, 6, 16, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
+                },
+                new BlogPost
+                {
+                    Id = 18,
+                    Title = "Microblog, day Eighteen",
+                    Content = "Moved post update/delte alerts to single blog view. Updated cancel button on new post so it directs back to home page. Deleting a post now displays alert message in homepage. Brought over star field from main CM page. Updated navigation bar to support collapsed menu on small screen sizes. ",
+                    CreatedDate = new DateTime(2023, 6, 17, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
                 }

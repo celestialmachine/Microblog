@@ -45,12 +45,6 @@
     </script>
 }
 
-<div class="row justify-content-center m-0 p-0">
-    <div class="text-center">
-        <h1>@ViewData["Title"]</h1>
-    </div>
-</div>
-
 @if (TempData.Keys.Contains("message"))
 {
     <div class="row justify-content-center">
@@ -63,7 +57,7 @@
 @foreach (var post in Model.Posts)
 {
     //Any html/css changes made here must also be made on the ajax call
-    <article class="border p-3 m-0">
+    <article class="border p-3 m-0 mt-3 rounded-1">
         <div class="row justify-content-center">
             <h2 class="text-center fw-bold"><a asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">@post.Title</a></h2>
         </div>

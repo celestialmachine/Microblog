@@ -1,5 +1,6 @@
 ﻿body {
     overflow: hidden;
+    color: #fff;
 }
 
 .starContainer {
@@ -42,6 +43,24 @@
     top: -600px;
 }
 
+header {
+    background-color: #F72585;
+    backdrop-filter: opacity(100%);
+}
+
+nav{
+    max-width: 800px;
+    margin: auto;
+}
+
+.nav-link{
+    color: #fff;
+}
+
+.btn.btn-custom:hover {
+    color: #F72585;
+}
+
 .content {
     margin: auto;
     z-index: 10;
@@ -50,13 +69,26 @@
     background: linear-gradient(180deg, #3A0CA3, #8c0d71);
 }
 
-#blogBody {
-    width: 100%;
+main {
+    width: 800px;
     overflow: hidden;
+    margin: auto;
+}
+
+article {
+    background-color: hsla(0, 100%, 100%, 0.1);
+    backdrop-filter: blur(1px);
 }
 
 @media (max-width: 800px) {
-    body {
+    main {
         width: 100vw;
+    }
+    .nav-item{
+        margin-left: 1rem;
+        margin-top: .5rem;
+    }
+    form button{
+        width: 100%;
     }
 }
