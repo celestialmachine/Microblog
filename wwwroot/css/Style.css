@@ -59,14 +59,22 @@ nav{
 
 .btn.btn-custom:hover {
     color: #F72585;
+    background-color: #fff;
+}
+
+.btn.btn-custom-primary {
+    background-color: #F72585;
+    color: #fff;
+    backdrop-filter: opacity(100%);
 }
 
 .link-custom:hover,
 .link-custom:visited,
 .link-custom:link,
-.link-custom:active{
+.link-custom:active {
     color: #fff;
     text-decoration: none;
+    backdrop-filter: opacity(100%);
 }
 
 .content {
@@ -80,12 +88,13 @@ nav{
 main {
     max-width: 767px;
     overflow: visible;
-    margin: auto;
+    margin: 3rem auto auto auto;
 }
 
-article {
+section {
     
 }
+
 
 .blogPreview {
     background-color: hsla(0, 100%, 100%, 0.1);
@@ -103,7 +112,7 @@ article {
         margin-right: 1rem;
     }
 
-    form button {
+    form button, form a {
         width: 100%;
     }
 }

@@ -182,6 +182,15 @@ namespace Microblog.Models
                     CreatedDate = new DateTime(2023, 6, 17, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
+                },
+                new BlogPost
+                {
+                    Id = 19,
+                    Title = "Microblog, day Nineteen",
+                    Content = "",
+                    CreatedDate = new DateTime(2023, 6, 18, 21, 0, 0),
+                    UpdatedDate = DateTime.Now,
+                    CategoryId = "DEV"
                 }
             );
         }
