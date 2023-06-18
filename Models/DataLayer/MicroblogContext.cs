@@ -187,7 +187,7 @@ namespace Microblog.Models
                 {
                     Id = 19,
                     Title = "Microblog, day Nineteen",
-                    Content = "",
+                    Content = "Styled admin login page.",
                     CreatedDate = new DateTime(2023, 6, 18, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"
