@@ -66,7 +66,6 @@
             <div class="col-2 pe-3 ps-0 mb-3">
                 <div class="h-100 d-flex align-items-center justify-content-center">
                     <span class="text-white-50">@post.CreatedDate.ToShortDateString()</span>
-                    @*<a asp-action="Index" asp-controller="Home" asp-route-FilterCategory="@post.Category.Name">@post.Category.Name</a>*@
                 </div>
             </div>
             <h2 class="col-10 fw-bold ps-0 mb-3"><a class="link-custom" asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">@post.Title</a></h2>

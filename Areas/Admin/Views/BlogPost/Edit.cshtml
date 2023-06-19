@@ -1,25 +1,28 @@
 ﻿@model BlogPost
 @{
-    ViewData["Title"] = "Welcome, Victor";
+    ViewData["Title"] = $"{ViewBag.Action} Post:";
 }
 @section scripts {
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
-<section class="container border">
-    <h1>@ViewData["Title"]</h1>
-    <h2>Create a new post:</h2>
-    <form asp-action="Edit" method="post">
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div>
+<section class="blogPreview p-3 rounded-2">
+    <div class="row">
+        <h1 class="col">@ViewData["Title"]</h1>
+    </div>
+    <form class="row" asp-action="Edit" method="post">
+        <div class="mb-3">
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div class="mb-3">
             <label asp-for="Title" class="form-label">Title</label>
             <input asp-for="Title" class="form-control" />
         </div>
-        <div>
+        <div class="mb-3">
             <label asp-for="Content" class="form-label">Content</label>
-            <textarea asp-for="Content" class="form-control" rows="5"></textarea>
+            <textarea asp-for="Content" class="form-control" rows="20"></textarea>
         </div>
-        <div>
+        <div class="mb-3">
             <label asp-for="CategoryId" class="form-label">Category</label>
             <select asp-for="CategoryId" class="form-select">
                 <option value="">Select a category</option>
@@ -32,14 +35,16 @@
         <input type="hidden" asp-for="Id" />
         <input type="hidden" asp-for="CreatedDate" />
         <input type="hidden" asp-for="UpdatedDate" />
-        <button type="submit" class="btn btn-primary">Post</button>
-        @if(ViewBag.Action == "Edit")
-        {
-            <a asp-controller="BlogPost" asp-action="Index" asp-area="" asp-route-id="@Model.Id" class="btn btn-primary">Cancel</a>
-        }
-        else
-        {
-            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
-        }
+        <div class="row m-0">
+            <button type="submit" class="btn btn-custom btn-custom-primary link-custom mb-3">@(ViewBag.Action == "Edit" ? "Save" : "Post")</button>
+            @if (ViewBag.Action == "Edit")
+            {
+                <a asp-controller="BlogPost" asp-action="Index" asp-area="" asp-route-id="@Model.Id" class="btn btn-custom btn-outline-primary link-custom mb-3">Cancel</a>
+            }
+            else
+            {
+                <a asp-controller="Home" asp-action="Index" class="btn btn-custom btn-outline-primary link-custom mb-3">Cancel</a>
+            }
+        </div>
     </form>
 </section>

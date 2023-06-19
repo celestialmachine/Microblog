@@ -3,6 +3,7 @@
 @inject SignInManager<User> signInManager;
 @{
     ViewData["Title"] = "Single Post View";
+    string modelCategory = Model.Category is null ? "" : Model.Category.Name;
 }
 @if (TempData.Keys.Contains("message"))
 {
@@ -10,14 +11,17 @@
         <h4 class="bg-success m-0 p-3 text-center">@TempData["message"]</h4>
     </div>
 }
-<section class="container border">
-    <h1 class="row justify-content-center">@Model.Title</h1>
-    <p class="row justify-content-center">@Model.CreatedDate || @(Model.Category is null ? "Uncategorized" : Model.Category.Name)</p>
-    <div class="justify-content-center p-3">@Html.Raw(Markdig.Markdown.ToHtml(Model.Content ?? "Error reading post content: View"))</div>
+<section class="blogPreview rounded-2 p-4">
+    <h1 class="row m-0 mb-3">@Model.Title</h1>
+    <p class="row text-white-50 m-0 mb-3">@Model.CreatedDate.ToLongDateString()</p>
+    <div class="justify-content-center mb-3">@Html.Raw(Markdig.Markdown.ToHtml(Model.Content ?? "Error reading post content: View"))</div>
+    <div class="row m-0 mb-3 justify-content-center">
+        <a class="btn btn-custom btn-custom-primary btn-sm link-custom col-6" asp-action="Index" asp-controller="Home" asp-route-FilterCategory="@modelCategory">See more from this category: <span class="fw-bold">@modelCategory.ToUpper()</span></a>
+    </div>
     @if (signInManager.IsSignedIn(User))
     {
-        <a asp-area="Admin" asp-action="Edit" asp-controller="BlogPost" asp-route-id="@Model.Id" class="btn btn-primary mb-2">Edit</a>
-        <a asp-area="Admin" asp-action="Delete" asp-controller="BlogPost" asp-route-id="@Model.Id" class="btn btn-primary mb-2 ms-2">Delete</a>
+        <a asp-area="Admin" asp-action="Edit" asp-controller="BlogPost" asp-route-id="@Model.Id" class="btn btn-custom btn-custom-primary link-custom mb-3">Edit</a>
+        <a asp-area="Admin" asp-action="Delete" asp-controller="BlogPost" asp-route-id="@Model.Id" class="btn btn-custom btn-custom-primary link-custom mb-3">Delete</a>
     }
 </section>
 
