@@ -187,7 +187,7 @@ namespace Microblog.Models
                 {
                     Id = 19,
                     Title = "Microblog, day Nineteen",
-                    Content = "Styled admin login page.",
+                    Content = "Finished styling all views including responsiveness. Updated logic on the edit view to display proper text when it is being used to add post. Added a 'Read More' functionality by adding method to blogPost that reduces content to preview length. The controller then returns the shortened content to the view.",
                     CreatedDate = new DateTime(2023, 6, 18, 21, 0, 0),
                     UpdatedDate = DateTime.Now,
                     CategoryId = "DEV"

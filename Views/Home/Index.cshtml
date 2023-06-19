@@ -20,20 +20,20 @@
                         var addedPosts = '';
                         for (var i = 0; i < response.length; i++){
                             var date = new Date(Date.parse(response[i].createdDate));
-                            addedPosts += '<article class="m-0 mt-5">'
+                            addedPosts += '<article class="m-0 mb-5">'
                                 + '<div class="row m-0">'
-                                + '<div class="col-2 pe-3 ps-0 mb-3">'
+                                + '<h2 class="col col-md-10 fw-bold ps-0 mb-3 order-md-2 ms-3 ms-md-0">'
+                                + '<a class="link-custom" href="/post/' + response[i].id + '"/>' + response[i].title + '</a></h2>'
+                                + '<div class="col-2 col-md-2 pe-3 ps-0 mb-3 order-md-1">'
                                 + '<div class="h-100 d-flex align-items-center justify-content-center">'
                                 + '<span class="text-white-50">'
-                                + date.toLocaleDateString('en-US') + '</span></div></div>'
-                                + '<h2 class="col-10 fw-bold ps-0 mb-3">'
-                                + '<a class="link-custom" href="/post/' + response[i].id + '"/>' + response[i].title
-                                + '</a></h2></div>'
+                                + date.toLocaleDateString('en-US')
+                                + '</span></div></div></div>'
                                 + '<div class="row justify-content-end m-0">'
-                                + '<div class="col-10 blogPreview rounded-2 m-0 px-3 pt-3">'
-                                + response[i].content + '</div></div></article>'
+                                + '<a class="col col-md-10 blogPreview rounded-2 m-0 px-3 pt-3 text-decoration-none text-white" href="/post/' + response[i].id + '"/>'
+                                + '<div>' + response[i].content + '</div></a></div></article>'
                         }
-                        $(addedPosts).insertBefore("#testload")
+                        $(addedPosts).insertBefore("#loadBreak")
                     },
                     error: function(){
                         alert('Error')
@@ -41,7 +41,8 @@
                 })
                 //Disable load more if laoding last page
                 if (articleCount + parseInt(@ViewBag.pageSize) >= parseInt(@ViewBag.ArticleCount)) {
-                    $("#btnLoadMore").prop('disabled', true);
+                    $("#btnLoadMore").removeClass("link-custom btn-custom btn-custom-primary");
+                    $("#btnLoadMore").addClass("disabled")
                     $("#btnLoadMore").html('You have reached the end');
                 }
             })
@@ -63,19 +64,23 @@
     //Any html/css changes made here must also be made on the ajax call
     <article class="m-0 mb-5">
         <div class="row m-0">
-            <div class="col-2 pe-3 ps-0 mb-3">
+            <h2 class="col col-md-10 fw-bold ps-0 mb-3 order-md-2 ms-3 ms-md-0"><a class="link-custom" asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">@post.Title</a></h2>
+            <div class="col-2 col-md-2 pe-3 ps-0 mb-3 order-md-1">
                 <div class="h-100 d-flex align-items-center justify-content-center">
                     <span class="text-white-50">@post.CreatedDate.ToShortDateString()</span>
                 </div>
             </div>
-            <h2 class="col-10 fw-bold ps-0 mb-3"><a class="link-custom" asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">@post.Title</a></h2>
         </div>
         <div class="row justify-content-end m-0">
-            <div class="col-10 blogPreview rounded-2 m-0 px-3 pt-3">
-                @Html.Raw(Markdig.Markdown.ToHtml(post.Content ?? "Error reading post content: View"))
-            </div>
+            <a class="col col-md-10 blogPreview rounded-2 m-0 px-3 pt-3 text-decoration-none text-white" asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">
+                <div>
+                    @Html.Raw(Markdig.Markdown.ToHtml(post.Content ?? "Error reading post content: View"))
+                </div>
+            </a>
         </div>
     </article>
 }
-<span id="testload"></span>
-<button id="btnLoadMore">Load More</button>
+<span id="loadBreak"></span>
+<div class="row m-0 mb-3">
+    <a class="btn btn-custom btn-custom-primary link-custom col-10 offset-1 offset-md-2" id="btnLoadMore">Load More</a>
+</div>

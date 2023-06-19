@@ -27,5 +27,11 @@ namespace Microblog.Models
         }
         //TODO kinda useless in this blog scenario but okay. Maybe get rid off.
         public string Slug => CategoryId + '-' + Title?.Replace(' ', '-').ToLower();
+        
+        public void CreatePreview(int characterCount)
+        {
+            Content = new String(Content?.Take(characterCount).ToArray());
+            Content += "...&nbsp;(read more)";
+        }
     }
 }

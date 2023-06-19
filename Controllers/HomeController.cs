@@ -11,6 +11,7 @@ namespace Microblog.Controllers
         public HomeController(MicroblogContext context) => _context = context;
         private int _initialPageSize = 10;
         private int _pageSize = 3;
+        private int _previewCharCount = 300;
 
         [HttpGet]
         [Route("/{FilterCategory?}")]
@@ -27,20 +28,11 @@ namespace Microblog.Controllers
             ViewBag.ArticleCount = query.Count();
             //load initial pagesize, TODO should initial page size be bigger?
             model.Posts = query.Take(_initialPageSize).ToList();
+            foreach (var post in model.Posts)
+            {
+                post.CreatePreview(_previewCharCount);
+            }
             return View(model);
-        }
-
-
-        [HttpGet]
-        public IActionResult Test()
-        {
-            IQueryable<BlogPost> query = _context.BlogPosts.Include(bp => bp.Category).OrderByDescending(bp => bp.CreatedDate);
-            //create new viewModel
-            var vm = new BlogViewModel { };
-            //filter by paging
-            //query = query.Skip((vm.CurrentRoute.PageNumber - 1) * vm.CurrentRoute.PageSize).Take(vm.CurrentRoute.PageSize);
-            vm.Posts = query.ToList();
-            return View(vm);
         }
 
         [HttpGet]
@@ -59,6 +51,7 @@ namespace Microblog.Controllers
             vm.Posts = query.ToList();
             foreach(var post in vm.Posts)
             {
+                post.CreatePreview(_previewCharCount);
                 post.Content = Markdig.Markdown.ToHtml(post.Content ?? "Error reading post content: Controller");
             }
             return Json(vm.Posts);
