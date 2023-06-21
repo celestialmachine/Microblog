@@ -11,10 +11,11 @@
         <h4 class="bg-success m-0 p-3 text-center">@TempData["message"]</h4>
     </div>
 }
-<section class="blogPreview rounded-2 p-4">
+<section class="blogPreview rounded-2 p-4" id="postBody">
     <h1 class="row m-0 mb-3">@Model.Title</h1>
     <p class="row text-white-50 m-0 mb-3">@Model.CreatedDate.ToLongDateString()</p>
-    <div class="justify-content-center mb-3">@Html.Raw(Markdig.Markdown.ToHtml(Model.Content ?? "Error reading post content: View"))</div>
+    <p><strong>Disclaimer: </strong>The following content is 'AI' generated and it is meant to be viewed as placeholder content. I'm currently working on some posts of my own to populate this blog. Please check back later for some original content!</p>
+    <div id="markdown" class="justify-content-center mb-3">@Html.Raw(Markdig.Markdown.ToHtml(Model.Content ?? "Error reading post content: View"))</div>
     <div class="row m-0 mb-3 justify-content-center">
         <a class="btn btn-custom btn-custom-primary btn-sm link-custom col-6" asp-action="Index" asp-controller="Home" asp-route-FilterCategory="@modelCategory">See more from this category: <span class="fw-bold">@modelCategory.ToUpper()</span></a>
     </div>

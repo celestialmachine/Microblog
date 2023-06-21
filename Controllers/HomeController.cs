@@ -9,7 +9,7 @@ namespace Microblog.Controllers
     {
         private MicroblogContext _context { get; set; }
         public HomeController(MicroblogContext context) => _context = context;
-        private int _initialPageSize = 10;
+        private int _initialPageSize = 4;
         private int _pageSize = 3;
         private int _previewCharCount = 300;
 
