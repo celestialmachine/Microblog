@@ -37,6 +37,7 @@ namespace Microblog.Controllers
                     }
                     else
                     {
+                        TempData["message"] = $"Welcome {model.Username}.";
                         return RedirectToAction("Index", "Home");
                     }
                 }
@@ -49,6 +50,7 @@ namespace Microblog.Controllers
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
+            TempData["message"] = "You have logged out!";
             return RedirectToAction("Index", "Home");
         }
 
