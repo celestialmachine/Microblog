@@ -26,11 +26,10 @@
                                 + '<a class="link-custom" href="/post/' + response[i].id + '"/>' + response[i].title + '</a></h2>'
                                 + '<div class="col-2 col-md-2 pe-3 ps-0 mb-3 order-md-1">'
                                 + '<div class="h-100 d-flex align-items-center justify-content-center">'
-                                + '<span class="text-white-50">'
-                                + date.toLocaleDateString('en-US')
+                                + '<span>' + date.toLocaleDateString('en-US')
                                 + '</span></div></div></div>'
                                 + '<div class="row justify-content-end m-0">'
-                                + '<a class="col col-md-10 blogPreview rounded-2 m-0 px-3 pt-3 text-decoration-none text-white" href="/post/' + response[i].id + '"/>'
+                                + '<a class="col col-md-10 blogPreview rounded-2 m-0 px-3 pt-3 text-decoration-none" href="/post/' + response[i].id + '"/>'
                                 + '<div>' + response[i].content + '</div></a></div></article>'
                         }
                         $(addedPosts).insertBefore("#loadBreak")
@@ -67,12 +66,12 @@
             <h2 class="col col-md-10 fw-bold ps-0 mb-3 order-md-2 ms-3 ms-md-0"><a class="link-custom" asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">@post.Title</a></h2>
             <div class="col-2 col-md-2 pe-3 ps-0 mb-3 order-md-1">
                 <div class="h-100 d-flex align-items-center justify-content-center">
-                    <span class="text-white-50">@post.CreatedDate.ToShortDateString()</span>
+                    <span>@post.CreatedDate.ToShortDateString()</span>
                 </div>
             </div>
         </div>
         <div class="row justify-content-end m-0">
-            <a class="col col-md-10 blogPreview rounded-2 m-0 px-3 pt-3 text-decoration-none text-white" asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">
+            <a class="col col-md-10 blogPreview rounded-2 m-0 px-3 pt-3 text-decoration-none" asp-action="Index" asp-controller="BlogPost" asp-route-id="@post.Id">
                 <div>
                     @Html.Raw(Markdig.Markdown.ToHtml(post.Content ?? "Error reading post content: View"))
                 </div>
@@ -83,5 +82,5 @@
 <span id="loadBreak"></span>
 @*///Load more feature currently disabled until we can figure out how to keep posts in memory when hitting back button.
 <div class="row m-0 mb-3">
-    <a class="btn btn-custom btn-custom-primary link-custom col-10 offset-1 offset-md-2" id="btnLoadMore">Load More</a>
+    <a class="btn btn-custom btn-custom-primary col-10 offset-1 offset-md-2" id="btnLoadMore">Load More</a>
 </div>*@
