@@ -12,10 +12,12 @@ namespace Microblog.Models
         [StringLength(75)]
         public string? Title { get; set; }
         [Required]
+        [StringLength(2500)]
         public string? Content { get; set; }
         public DateTime CreatedDate { get; set;}
         public DateTime UpdatedDate { get; set;}
         [Required(ErrorMessage =  "Please select a category or enter a new one.")]
+        [StringLength(3)]
         public string CategoryId { get; set; } = string.Empty; //Foreign key property
         [ValidateNever]
         public Category Category { get; set; } = null!; //Navigation property
